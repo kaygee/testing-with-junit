@@ -4,6 +4,7 @@ import annotations.BankAccount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -36,8 +37,19 @@ public class BankAccountParameterizedTest {
 
   @ParameterizedTest
   @CsvSource({"100, Mary", "200, Bob", "1, Kevin"})
-  @DisplayName("Repeat successful deposits using parameters")
-  public void depositAndNameTest(double amount, String name, BankAccount bankAccount) {
+  @DisplayName("Repeat successful deposits using CSV source")
+  public void depositAndNameTestWithCsvSource(double amount, String name, BankAccount bankAccount) {
+    bankAccount.deposit(amount);
+    bankAccount.setHolderName(name);
+    assertEquals(amount, bankAccount.getBalance());
+    assertEquals(name, bankAccount.getHolderName());
+  }
+
+  @ParameterizedTest
+  @CsvFileSource(files = "resources/deposits.csv")
+  @DisplayName("Repeat successful deposits using CSV File source")
+  public void depositAndNameTestWithCsvFileSource(
+      double amount, String name, BankAccount bankAccount) {
     bankAccount.deposit(amount);
     bankAccount.setHolderName(name);
     assertEquals(amount, bankAccount.getBalance());

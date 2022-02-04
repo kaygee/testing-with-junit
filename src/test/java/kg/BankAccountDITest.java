@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BankAccountDITest {
 
   @Test
-  @DisplayName("Deposit successfully")
+  @DisplayName("Deposit successfully using dependency injection")
   public void testDeposit(BankAccount bankAccount) {
     bankAccount.deposit(500);
     assertEquals(500, bankAccount.getBalance());

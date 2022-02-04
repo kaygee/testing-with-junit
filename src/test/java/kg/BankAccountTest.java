@@ -1,6 +1,7 @@
 package kg;
 
 import annotations.BankAccount;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -71,6 +72,7 @@ public class BankAccountTest {
   }
 
   @Test
+  @Disabled("Timing can be unstable")
   @DisplayName("Test speed of deposit")
   public void testDepositTimeout() {
     BankAccount bankAccount = new BankAccount(500, -1000);
