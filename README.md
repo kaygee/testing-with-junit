@@ -13,3 +13,6 @@
 - Select import project
 - Select your testing-with-junit folder
 - Select import project from external model and select maven
+
+## Surefire Plugin Execution
+- `mvn surefire-report:report`

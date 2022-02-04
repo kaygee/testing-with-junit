@@ -23,7 +23,7 @@ public class BankAccountTest {
   public void testValidWithdraw() {
     BankAccount bankAccount = new BankAccount(500, -1000);
     bankAccount.withdraw(300);
-    assertEquals(200, bankAccount.getBalance());
+    assertEquals(200, bankAccount.getBalance(), "Unexpected balance!");
   }
 
   @Test
