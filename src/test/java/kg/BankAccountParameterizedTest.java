@@ -46,7 +46,7 @@ public class BankAccountParameterizedTest {
   }
 
   @ParameterizedTest
-  @CsvFileSource(files = "resources/deposits.csv")
+  @CsvFileSource(resources = "file.csv")
   @DisplayName("Repeat successful deposits using CSV File source")
   public void depositAndNameTestWithCsvFileSource(
       double amount, String name, BankAccount bankAccount) {
