@@ -1,6 +1,10 @@
 package kg;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import annotations.BankAccount;
+import java.time.DayOfWeek;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,11 +13,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import resolvers.BankAccountParameterResolver;
-
-import java.time.DayOfWeek;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(BankAccountParameterResolver.class)
 public class BankAccountParameterizedTest {
@@ -46,7 +45,7 @@ public class BankAccountParameterizedTest {
   }
 
   @ParameterizedTest
-  @CsvFileSource(resources = "file.csv")
+  @CsvFileSource(files = "src/test/resources/file.csv")
   @DisplayName("Repeat successful deposits using CSV File source")
   public void depositAndNameTestWithCsvFileSource(
       double amount, String name, BankAccount bankAccount) {
